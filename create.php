@@ -82,8 +82,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("INSERT INTO students (name, email, roll_number, class, teacher, profile_image) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$data['name'], $data['email'], $data['roll_number'], $data['class'], $data['teacher'], $data['profile_image']]);
+        $stmt = $pdo->prepare("INSERT INTO students (name, email, roll_number, class, teacher, profile_image, created_at) VALUES (?, ?, ?, ?, ?, ? ,? )");
+        $stmt->execute([$data['name'], $data['email'], $data['roll_number'], $data['class'], $data['teacher'], $data['profile_image'], date('Y-m-d H:i:s')]);
         header("Location: list.php?msg=created");
         exit;
     }

@@ -337,6 +337,7 @@ $students = $pdo->query("SELECT * FROM students ORDER BY id DESC")->fetchAll();
                                 <th>Roll No.</th>
                                 <th>Class</th>
                                 <th>Teacher</th>
+                                <th>Created At</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -370,6 +371,7 @@ $students = $pdo->query("SELECT * FROM students ORDER BY id DESC")->fetchAll();
                                         <span class="badge-class"><?= htmlspecialchars($s['class']) ?></span>
                                     </td>
                                     <td><?= htmlspecialchars($s['teacher']) ?></td>
+                                    <td><?= date('d M Y, h:i A', strtotime($s['created_at'])) ?></td>
                                     <td>
                                         <div class="d-flex gap-2">
                                             <a href="edit.php?id=<?= $s['id'] ?>" class="btn-edit">

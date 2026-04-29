@@ -96,8 +96,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   if (empty($errors)) {
-    $upd = $pdo->prepare("UPDATE students SET name=?, email=?, roll_number=?, class=?, teacher=?, profile_image=? WHERE id=?");
-    $upd->execute([$data['name'], $data['email'], $data['roll_number'], $data['class'], $data['teacher'], $data['profile_image'], $id]);
+    $upd = $pdo->prepare("UPDATE students SET name=?, email=?, roll_number=?, class=?, teacher=?, profile_image=? , updated_at=? WHERE id=?");
+    $upd->execute([$data['name'], $data['email'], $data['roll_number'], $data['class'], $data['teacher'], $data['profile_image'], date('Y-m-d H:i:s'), $id]);
     header("Location: list.php?msg=updated");
     exit;
   }
